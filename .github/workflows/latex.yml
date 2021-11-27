@@ -12,9 +12,9 @@ jobs:
           root_file: |
             ./Pflichtenheft/main.tex
           latexmk_shell_escape: true
+      - run: mv ./Pflichtenheft/main.tex ./Pflichtenheft/Pflichtenheft_Folien.pdf
       - name: Upload main.pdf
         uses: actions/upload-artifact@v2
-        run: mv ./Pflichtenheft/main.tex ./Pflichtenheft/Pflichtenheft_Folien.pdf
         with:
           name: Slides
           path: |
