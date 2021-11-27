@@ -1,0 +1,55 @@
+\titleimage{bauplan_2020_sdq}
+\grouplogo{sdq_logo} 
+\groupname{Software Design and Quality}
+
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+%Bildquellen
+\usepackage{graphicx}
+
+%Einheiten
+\usepackage{siunitx}
+\sisetup{
+  locale = DE,
+  per-mode = symbol
+}
+
+%URLs 
+\hypersetup{colorlinks=true,linkcolor=black,urlcolor=blue}
+
+\usepackage{currfile}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% __  __           _                           %
+% |  \/  |   __ _  | | __  _ __    ___    ___  %
+% | |\/| |  / _` | | |/ / | '__|  / _ \  / __| %
+% | |  | | | (_| | |   <  | |    | (_) | \__ \ % 
+% |_|  |_|  \__,_| |_|\_\ |_|     \___/  |___/ %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{tcolorbox}
+\usepackage{fancyvrb}
+
+\newcommand{\concat}[2]{
+    #1#2
+}
+
+\newcommand\inprelfile[1] {
+    \input{\relfile{#1}}
+}
+
+\newcommand\relfile[1]{
+    \currfiledir#1
+}
+
+\newcommand\relimgfile[1]{
+    \currfiledir images/#1
+}
+
+\newcommand\inprelmod[1] {
+    \input{\relfile{#1/main.tex}}
+}
+
+\newcommand\inpmod[1] {
+    \input{\concat{Kapitel/#1/}{main.tex}}
+}
