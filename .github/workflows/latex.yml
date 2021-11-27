@@ -6,16 +6,16 @@ jobs:
     steps:
       - name: Set up Git repository
         uses: actions/checkout@v2
+      - run: cd ./Pflichtenheft
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v2
         with:
-          root_file: |
-            ./Pflichtenheft/main.tex
+          root_file: main.tex
           latexmk_shell_escape: true
-      - run: mv ./Pflichtenheft/main.tex ./Pflichtenheft/Pflichtenheft_Folien.pdf
-      - name: Upload main.pdf
-        uses: actions/upload-artifact@v2
-        with:
-          name: Slides
-          path: |
-            ./Pflichtenheft/Pflichtenheft_Folien.pdf
+      # - run: mv ./Pflichtenheft/main.tex ./Pflichtenheft/Pflichtenheft_Folien.pdf
+      - run: ls -al
+      # - name: Upload main.pdf
+      #   uses: actions/upload-artifact@v2
+      #   with:
+      #     name: Slides
+      #     path: 
