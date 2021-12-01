@@ -274,3 +274,6 @@ TSWLatexianTemp*
 
 # Makeindex log files
 *.lpz
+
+# do not upload the main.pdf
+main.pdf
