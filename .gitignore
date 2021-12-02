@@ -277,3 +277,4 @@ TSWLatexianTemp*
 
 # do not upload the main.pdf
 main.pdf
+.vscode/settings.json
