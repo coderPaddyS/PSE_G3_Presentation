@@ -1,5 +1,77 @@
-\section{Funktionale Anforderungen}
+\section{Funktionen}
 
-\begin{frame}
-    
+\begin{frame}\frametitle{Kartenfunktionen}
+    \begin{columns}
+        \column{0.5\textwidth}
+        \begin{itemize}
+            \item Straßenkarte mit Gebäuden
+            \item möglichst \glqq intuitive\grqq{} Bedienung
+            \item mehr Informationen durch Klicken
+            \item Etagenkarten
+        \end{itemize}
+        \column{0.5\textwidth}
+        \begin{figure}[ht]
+            \centering
+            \begin{minipage}[b]{0.4\textwidth}
+                \includegraphics[width=3cm]{\relimgfile{Hauptansicht.png}}
+            \end{minipage}
+            \hfill
+            \begin{minipage}[b]{0.4\textwidth}
+                \includegraphics[width=3cm]{\relimgfile{Gebäudeinformationen_mit_Etagenansicht.png}}
+            \end{minipage}
+        \end{figure}
+    \end{columns}
+\end{frame}
+
+\begin{frame}\frametitle{Ortungsfunktion}
+    \begin{columns}
+        \column{0.5\textwidth}
+        \begin{itemize}
+            \item Standort anzeigen
+            \item Keine Routenplanung
+                  \begin{enumerate}
+                      \item Kartenmaterial schlecht
+                      \item mehrere Eingänge
+                      \item kurze Routen
+                      \item nicht-optimale Route schadet Benutzererfahrung stark
+                  \end{enumerate}
+        \end{itemize}
+        \column{0.5\textwidth}
+        \begin{figure}[ht]
+            \centering
+            \includegraphics[width=7cm]{\relimgfile{Weg_Mensa.PNG}}
+            \caption{Weg vom Forum zur Mensa; Kartenquelle: Google Maps}
+        \end{figure}
+    \end{columns}
+\end{frame}
+
+\begin{frame}\frametitle{Suchfunktion}
+    Suche mit:
+    \begin{itemize}
+        \item Gebäudenummer
+        \item Gebäudenummer und Raumnummer
+        \item Name einer Person (wenn nach Büro gesucht wird)
+        \item lokaler oder globaler Alias
+    \end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{Anmeldefunktion}
+    Vorzugsweise über Shibboleth
+    \begin{itemize}
+        \item Identifikation über ID (anonym)
+              \begin{enumerate}
+                  \item Vorschläge nur einmal bewerten
+                  \item In Zukunft: Nutzer herausfiltern
+              \end{enumerate}
+        \item KIT-Angehörige
+        \item Psychologisch: ernsthafteres Benehmen
+    \end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{Alias hinzufügen}
+    \begin{figure}
+        \includegraphics[width=16cm]{\relimgfile{Alias_Prozess.png}}
+        \vfill\null
+    \end{figure}
+    \vfill\null
 \end{frame}
