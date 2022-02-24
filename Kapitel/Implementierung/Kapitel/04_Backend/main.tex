@@ -1,18 +1,46 @@
 \section{Backend}
 
+\begin{frame}\frametitle{Schwierigkeiten}
+\begin{itemize}
+	\item Entwurf
+	\begin{itemize}
+		\item keine großen Änderungen, jedoch teilweise noch einiges an Recherche
+	\end{itemize}
+	\item Abhängigkeiten in der Konfigurationsdatei \texttt{pom.xml}
+	\begin{itemize}
+		\item Konflikte zwischen Spring Boot und GraphQL
+	\end{itemize}
+	\item Gegen Ende
+	\begin{itemize}
+		\item Kommunikation mit dem Admin-Panel in Ordnung bringen
+		\item Hinzufügen weiterer vom Admin-Panel benötigte Funktionalität
+	\end{itemize}
+\end{itemize}
+\end{frame}
 
-    \begin{frame}%\frametitle{Authentifizierung}
-        \darkcodebox{authentifizierung.java}{Authentifizierung}
-        \href{https://www.scc.kit.edu/dienste/openid-connect.php}{SCC-OpenID}
-    \end{frame}
+\begin{frame}\frametitle{Sicherheit des Codes}
+\begin{itemize}
+	\item Verhinderung von SQL-Einschleusungen
+	\darkcodelines{SQLInjection.java}{Beispiel}{1}{4}
+	\item Verhinderung von Wettlaufsituationen
+	\begin{itemize}
+		\item \texttt{@Transactional(isolation = Isolation.REPEATABLE\_READ)}
+	\end{itemize}
+\end{itemize}
+\end{frame}
 
-    \begin{frame}%\frametitle{Integrationtests}
-        Umstellung auf GraphQl-dependency mit GraphQLTemplate für UnitTests. 
-        \darkcodebox{UtilTests.java}{Ausführen von Integrationstests}
-    \end{frame}
+\begin{frame}%\frametitle{Authentifizierung}
+  \darkcodebox{authentifizierung.java}{Authentifizierung}
+  \href{https://www.scc.kit.edu/dienste/openid-connect.php}{SCC-OpenID}
+\end{frame}
 
-    \begin{frame}%frametitle{Integrationstest mit Authorisierung}
-        User mit enstprechender Rolle in der Datenbank via UserRepository hinterlegt.
-        \darkcodebox{testWithAuthentifizierung.java}{Integrationtest requiring Authorization}
-        \darkcodebox{testAuthentifizierung.java}{Authenfizierung für Integrationstests}
-    \end{frame}
+\begin{frame}%\frametitle{Integrationtests}
+  Umstellung auf GraphQl-dependency mit GraphQLTemplate für UnitTests. 
+  \darkcodebox{UtilTests.java}{Ausführen von Integrationstests}
+\end{frame}
+
+\begin{frame}%frametitle{Integrationstest mit Authorisierung}
+  User mit enstprechender Rolle in der Datenbank via UserRepository hinterlegt.
+  \darkcodebox{testWithAuthentifizierung.java}{Integrationtest requiring Authorization}
+  \darkcodebox{testAuthentifizierung.java}{Authenfizierung für Integrationstests}
+\end{frame}
