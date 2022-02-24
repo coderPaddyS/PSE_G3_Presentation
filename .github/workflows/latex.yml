@@ -7,7 +7,7 @@ jobs:
       - name: Set up Git repository
         uses: actions/checkout@v2
       - name: Install python and pygmentize
-        steps: apt install python3 python3-pip && pip install Pygments 
+        run: apt install python3 python3-pip && pip install Pygments 
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v2
         with:
