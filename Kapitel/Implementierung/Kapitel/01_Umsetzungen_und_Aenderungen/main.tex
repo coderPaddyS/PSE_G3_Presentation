@@ -1,0 +1,37 @@
+\section{Umsetzungen und Änderungen}
+
+\begin{frame}\frametitle{Erfüllte Muss- \& Kannkriterien}
+    \begin{itemize}
+        \item Alle Musskriterien
+        \item Mehrere Anzeigesprachen der App
+        \item Anmeldung mit KIT-Account
+        \item Alias-Vorschläge können bewertet werden
+    \end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{Änderung: Verkleinerter Kartenradius}
+    \begin{itemize}
+        \item Ursprünglich: 5km Radius, also min. 100 $\text{km}^2$ \\
+            Benötigter Speicherplatz pro 1 $\text{km}^2$  in allen Zoomstufen: \textasciitilde15 MiB
+        \item Problem: Benötigter Speicherplatz \textasciitilde1,5 GiB
+        \item Außerdem: Nicht-KIT Gebäude bieten geringen Mehrwert
+        \item Daher: Begrenzung auf KIT Campus Süd mit 2,18 km auf 1,06 km
+        \item Ergebnis: Nur \textasciitilde30 MiB benötigt
+    \end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{Verwendete Karte}
+    \begin{center}
+    \includegraphics[width = 10cm]{\relimgfile{Karte}}
+    \end{center}
+\end{frame}
+
+\begin{frame}\frametitle{Änderung: Sprachauswahl über Standardeinstellungen}
+    \begin{itemize}
+        \item Ursprünglich: Sprachauswahl in den appinternen Einstellungen
+        \item Problem: Android bzw. Google empfehlen sehr stark die Sprache nicht manuell, 
+            sondern automatisch einzustellen
+        \item Daher: Anzeigesprache wird automatisch an die des Android-Geräts angepasst
+        \item Sonderfall: Wenn die Sprache nicht vorliegt wird Englisch angezeigt
+    \end{itemize}
+\end{frame}
