@@ -1,7 +1,7 @@
 try {
     JWTVerifier verifier = JWT
-                      .require(Algorithm.HMAC256("secret"))
-                      .withIssuer("my-graphql-api") //TODO
+                      .require(Algorithm.HMAC256(--geheime GitHub-Umgebungsvariable--))
+                      .withIssuer("my-graphql-api") 
                       .build();
     return Optional.of(verifier.verify(token));
 } catch(JWTVerificationException exx) {
