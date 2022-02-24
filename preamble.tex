@@ -54,3 +54,7 @@
 \newcommand\inpmod[1] {
     \input{\concat{Kapitel/#1/}{main.tex}}
 }
+
+\newcommand{\inprelimg}[2][]{
+    \includegraphics[#1]{\relimgfile{#2}}
+}
