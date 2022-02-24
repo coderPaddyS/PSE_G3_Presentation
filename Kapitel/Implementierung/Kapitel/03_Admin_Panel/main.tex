@@ -1,1 +1,31 @@
+\begin{frame}\frametitle{Karten-Problem}
+    \begin{minipage}{.49\textwidth}
+        \centering
+        \begin{figure}
+            \inprelimg[height=0.6\textheight]{falsch.png}
+            \caption{Davor}
+        \end{figure}
+    \end{minipage}
+    \begin{minipage}{.49\textwidth}
+        \centering
+        \begin{figure}
+            \inprelimg[height=0.6\textheight]{richtig.png}
+            \caption{Danach}
+        \end{figure}
+    \end{minipage}
+\end{frame}
+
 \section{Admin Panel}
+
+\begin{frame}\frametitle{Persistenz}
+    \begin{itemize}
+        \item Bei Browserrefresh wird die komplette Seite neugeladen und die Daten aus dem RAM gelöscht
+        \item Somit müssen persistente Daten anders gespeichert werden:
+        \item[$\rightarrow$] Browserspeicher ist absolut unsicher bei XSS
+        \item[$\rightarrow$] Service-Worker können deaktiviert werden
+        \item[$\rightarrow$] Client-Side-Cookies sind heutzutage eher suboptimal  
+        \item[$\rightarrow$] Für Server-Side-Cookies fehlt uns die Expertise
+        \item[$\rightarrow$] Verwaltung über WebAssembly ist sehr sicher, allerdings gibt es zahlreiche Probleme
+        \item[$\rightarrow$] Wir haben keine Persistenz implementiert.   
+    \end{itemize}
+\end{frame}
