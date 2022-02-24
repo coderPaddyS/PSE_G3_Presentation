@@ -8,7 +8,6 @@
 \usepackage{graphicx}
 \usepackage{fancyvrb}
 \usepackage{smartdiagram}
-\usepackage{listings}
 
 %Einheiten
 \usepackage{siunitx}
@@ -59,6 +58,8 @@
 \newcommand{\inprelimg}[2][]{
     \includegraphics[#1]{\relimgfile{#2}}
 }
+
+\usepackage{minted}
 
 \newcommand{\darkcodebox}[2] {
     \scantokens{
@@ -128,4 +129,8 @@
             \inputminted[bgcolor=white, linenos=true, style=colorful]{java}{\relcodefile{#1}}
         \end{tcolorbox}
     }
+}
+
+\newcommand\relcodefile[1]{
+    \currfiledir listings/#1
 }
