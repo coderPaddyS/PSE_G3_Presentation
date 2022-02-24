@@ -64,6 +64,8 @@
     \includegraphics[#1]{\relimgfile{#2}}
 }
 
+\usepackage{minted}
+
 \newcommand{\darkcodebox}[2] {
     \scantokens{
         \begin{tcolorbox}[
@@ -132,4 +134,8 @@
             \inputminted[bgcolor=white, linenos=true, style=colorful]{java}{\relcodefile{#1}}
         \end{tcolorbox}
     }
+}
+
+\newcommand\relcodefile[1]{
+    \currfiledir listings/#1
 }
