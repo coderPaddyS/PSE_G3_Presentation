@@ -58,3 +58,73 @@
 \newcommand{\inprelimg}[2][]{
     \includegraphics[#1]{\relimgfile{#2}}
 }
+
+\newcommand{\darkcodebox}[2] {
+    \scantokens{
+        \begin{tcolorbox}[
+            colback=black,
+            colupper=white,
+            collower=white,
+        ]
+            {\sffamily \large #2}
+            \tcblower
+            \inputminted[bgcolor=black, linenos=true, style=monokai]{java}{\relcodefile{#1}}
+        \end{tcolorbox}
+    }
+}
+
+\newcommand{\darkcodelines}[4] {
+    \scantokens{
+        \begin{tcolorbox}[
+            colback=black,
+            colupper=white,
+            collower=white,
+        ]
+            {\sffamily \large #2}
+            \tcblower
+            \inputminted[bgcolor=black, linenos=true, style=monokai, firstline=#3, lastline=#4]{java}{\relcodefile{#1}}
+        \end{tcolorbox}
+    }
+}
+
+\newcommand{\darkcodesmall}[1] {
+    \scantokens{
+        \begin{tcolorbox}[
+            colback=black,
+            colupper=white,
+            collower=white,
+            size=tight
+        ]
+            \inputminted[bgcolor=black, linenos=true, style=monokai]{java}{\relcodefile{#1}}
+        \end{tcolorbox}
+    }
+}
+
+\newcommand{\darkcodelang}[3] {
+    \scantokens{
+        \begin{tcolorbox}[
+            colback=black,
+            colupper=white,
+            collower=white,
+        ]
+            {\sffamily \large #2}
+            \tcblower
+            \inputminted[bgcolor=black, linenos=true, style=monokai]{#3}{\relcodefile{#1}}
+        \end{tcolorbox}
+    }
+}
+
+\newcommand{\lightcodebox}[2] {
+    \scantokens{
+        \begin{tcolorbox}[
+            lowerbox=ignored,
+            colback=white,
+            colupper=black,
+            collower=black,
+        ]
+            {\sffamily \large #2}
+            \tcblower
+            \inputminted[bgcolor=white, linenos=true, style=colorful]{java}{\relcodefile{#1}}
+        \end{tcolorbox}
+    }
+}
