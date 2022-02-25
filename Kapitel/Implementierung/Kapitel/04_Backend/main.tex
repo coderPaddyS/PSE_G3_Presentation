@@ -18,6 +18,30 @@
 \end{itemize}
 \end{frame}
 
+
+    \begin{frame}%\frametitle{Authentifizierung}
+        \darkcodebox{authentifizierung.java}{Authentifizierung}
+        \href{https://www.scc.kit.edu/dienste/openid-connect.php}{SCC-OpenID}
+    \end{frame}
+
+    \begin{frame}\frametitle{Integrationtests}
+        \darkcodebox{Utiltests1.java}{Ausführen von Integrationstests}
+    \end{frame}
+
+    \begin{frame}%\frametitle{Integrationtests}
+        \darkcodebox{UtilTests.java}{Ausführen von Integrationstests}
+    \end{frame}
+
+    \begin{frame}
+        \small
+        \darkcodebox{testWithAuthorization.java}{Integrationtest der  Authorisierung benötigt}
+    \end{frame}
+
+    \begin{frame}
+    \darkcodebox{testAuthentifizierung.java}{Authenfizierung für Integrationstests}
+
+    \end{frame}
+
 \begin{frame}\frametitle{Sicherheit des Codes}
 \begin{itemize}
 	\item Verhinderung von SQL-Einschleusungen
@@ -27,20 +51,4 @@
 		\item \texttt{@Transactional(isolation = Isolation.REPEATABLE\_READ)}
 	\end{itemize}
 \end{itemize}
-\end{frame}
-
-\begin{frame}%\frametitle{Authentifizierung}
-  \darkcodebox{authentifizierung.java}{Authentifizierung}
-  \href{https://www.scc.kit.edu/dienste/openid-connect.php}{SCC-OpenID}
-\end{frame}
-
-\begin{frame}%\frametitle{Integrationtests}
-  Umstellung auf GraphQl-dependency mit GraphQLTemplate für UnitTests. 
-  \darkcodebox{UtilTests.java}{Ausführen von Integrationstests}
-\end{frame}
-
-\begin{frame}%frametitle{Integrationstest mit Authorisierung}
-  User mit enstprechender Rolle in der Datenbank via UserRepository hinterlegt.
-  \darkcodebox{testWithAuthentifizierung.java}{Integrationtest requiring Authorization}
-  \darkcodebox{testAuthentifizierung.java}{Authenfizierung für Integrationstests}
 \end{frame}
