@@ -6,5 +6,7 @@ private static void compare(GraphQLTestTemplate graphQLTestTemplate
         format(GRAPHQL_QUERY_REQUEST_PATH, testname));
     String test = response.getRawResponse().getBody();
     assertThat(response.isOk()).isTrue();
-    JSONAssert.assertEquals(expectedResultBody, response.getRawResponse().getBody(), true);
+    JSONAssert.assertEquals(
+        expectedResultBody, 
+        response.getRawResponse().getBody(), true);
 }
