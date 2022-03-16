@@ -21,7 +21,7 @@
 		"prefix": "frame",
 		"body": [
 			"\\begin{frame}\\frametitle{${1:title}}",
-			"\t$",
+			"\t$0",
 			"\\end{frame}"
 		]
 	}
