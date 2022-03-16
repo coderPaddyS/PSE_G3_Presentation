@@ -1,0 +1,61 @@
+\section{Admin Panel}
+
+\begin{frame}\frametitle{Bugs}
+    \begin{itemize}
+        \item[BAP1] Abruf der Alias-Vorschläge vom Server funktionierte nicht.
+        \item[BAP2] Abruf der offiziellen Aliase vom Server funktionierte nicht.
+        \item[BAP3] Filterung nach Zahlen funktionierte nicht.
+        \item[BAP4] Offizielle Aliase wurden nur lokal im Browser gelöscht.
+        \item[BAP5] Offizielle Aliase wurden nicht geblacklisted.
+    \end{itemize}
+\end{frame} 
+
+\begin{frame}\frametitle{Ursachen und Lösungen}
+    \begin{adjustwidth}{1.5em}{0pt}
+        \begin{itemize}
+            \item[BAP1/2/4] Nicht valide GraphQL-Anfrage durch Typisierung gesendet \\
+                $\rightarrow$ Keine Typisierung angeben.
+            \item[BAP3] Die Text-Eingabe \texttt{0} wurde zu \texttt{"0"} escaped \\
+                $\rightarrow$ Automatisches Entfernen aller \texttt{"} im entsprechenden Filter.
+            \item[BAP5] Falscher Codeaufruf erfolgt, veraltetes Debug-Relikt aus Testphase \\ 
+                \texttt{\{this.blacklist.addEntry(new BlacklistEntry(entry)); return true;\}} $\rightarrow$ \\
+                \texttt{\{return this.addToBlacklist(new BlacklistEntry(entry))\}}
+        \end{itemize}
+    \end{adjustwidth}
+\end{frame}
+
+\begin{frame}\frametitle{Integrationstests}
+    \begin{itemize}
+        \item Keine Trennung zwischen UI- und Integrationstests $\rightarrow$ UI ruft direkt Methoden des Controller auf 
+            und HTML-Elemente sind bereits erprobt. 
+        \item[$\rightarrow$] UI-Tests entsprechen bereits fast Integrationstest, programmatisch bei Integrationstest getestet.
+        \item Fast alles mit Jest getestet.
+        \item Ausnahme: Lade/Aufrufzeiten des Admin-Panels und Login
+        \item[$\rightarrow$] Selenium IDE 
+    \end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{Problem}
+    \begin{itemize}
+        \item Admin-Panel kann keine Alias-Vorschläge erstellen
+        \item[$\rightarrow$] Tests können keine Daten permanent ändern, sonst Fehlschlag
+        \item Mögliche Lösungen: \begin{itemize}
+            \item Hinzufügen der Anfrage zum Erstellen von Alias-Vorschlägen
+            \item Emulieren des Backends in Test-Code
+        \end{itemize} 
+        \pause
+        \item Gewählte Lösung: Emulation
+    \end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{Test-Zusammenfassung}
+    \begin{itemize}
+        \item Unit-Tests: 333 (Parametrisierte) Unit-Tests
+        \item Unit-Test-Abdeckung: 87,73\%
+        \item Integration-Tests: 136 (Parametrisierte) Integrations-Tests
+        \item Integration-Test-Abdeckung: 74,94\%
+        \item Insgesamte Tests: 469 (Parametrisierte) Tests
+        \item Insgesamte Abdeckung: 95,8\% 
+        \item Insgesamt 5001 Zeilen Tests
+    \end{itemize}
+\end{frame}
