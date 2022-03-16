@@ -1,0 +1,16 @@
+\section*{App Test Coverage}
+
+\begin{frame}\frametitle{App Test Coverage}
+    \begin{itemize}
+        \item Gewöhnliche Unit-Tests: 203 Tests
+        \item Instrumentierte Tests (DataStore): 14 Tests
+        \item Testabdeckung: $\geq$88\%, $\geq$938/1069 LoC
+        \item Alle getesteten Pakete haben $\geq$90\% Abdeckung, außer: 
+        \begin{itemize}
+            \item datamanagement (51\%, 28/55 LoC): statische Funktionalität zum periodischen Herunterladen der Aliasse konnte nur manuell getestet werden
+            \item registration (37\%, 45/119 LoC): AuthManager kommuniziert direkt mit dem KIT-Server    
+        \end{itemize}
+        \item Funktionssequenzen: alle getestet, decken auch System- \& UI-Tests ab
+        \item Test-Framework für UI: Compose, Espresso, UI-Automator
+        \end{itemize}
+\end{frame}
