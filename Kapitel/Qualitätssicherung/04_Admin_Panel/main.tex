@@ -1,0 +1,74 @@
+\section{Admin Panel}
+
+\begin{frame}\frametitle{Integrationstests}
+    \begin{itemize}
+        \item Keine Trennung zwischen UI- und Integrationstests $\rightarrow$ UI ruft direkt Methoden des Controller auf 
+            und HTML-Elemente sind bereits erprobt. 
+        \item[$\rightarrow$] UI-Tests entsprechen bereits fast Integrationstest, programmatisch bei Integrationstest getestet.
+        \item Fast alles mit Jest getestet.
+        \item Ausnahme: Lade/Aufrufzeiten des Admin-Panels und Login
+        \item[$\rightarrow$] Selenium IDE.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{Problem 1}
+    \begin{itemize}
+        \item Admin-Panel kann keine Alias-Vorschläge erstellen
+        \item[$\rightarrow$] Tests können keine Daten permanent ändern, sonst Fehlschlag.
+        \item Mögliche Lösungen: \begin{itemize}
+            \item[L1:] Hinzufügen der Anfrage zum Erstellen von Alias-Vorschlägen
+            \item[$\rightarrow$] Tests sind nicht mehr unabhängig.
+            \item[$\rightarrow$] Lösbar durch Nutzung einer lokalen Instanz. 
+            \item[L2:] Emulieren des Backends in Test-Code
+            \item[$\rightarrow$] Komplette Emulation zu aufwendig.
+            \item[$\rightarrow$] Anfragen nicht validieren, nur auf Inhalt prüfen.
+        \end{itemize} 
+        \pause
+        \item Gewählte Lösung: L2
+        \item[$\rightarrow$] Technische Schwierigkeiten bei lokaler Instanz.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{Problem 2}
+    \begin{itemize}
+        \item Wie wird festgestellt ob genau ein spezieller Eintrag angezeigt wird?
+        \item Idee: Überprüfen ob der zu zeigende Text im Dokument ist.
+        \item[$\rightarrow$] Tests mit mehreren Aliasen für das gleiche Gebäude schlagen fehl.
+        \item Idee: Überprüfen ob der zu zeigende Text in einer logischen Einheit ist \begin{itemize}
+            \item[L1:] Elternelement über Klassen/IDs heraussuchen.
+            \item[$\rightarrow$] Möglichst vermeiden falls möglich, muss mitgeändert werden.
+            \item[L2:]Textinhalt des Dokumentes beinhaltet Eintrag am Stück.
+            \item[$\rightarrow$] Manchmal sind Leerzeichen im Textinhalt, manchmal nicht.
+            \item[$\rightarrow$] Ablaufen des DOM-Baumes zum Finden aller Texteinträge und speichern dieser als Array.
+        \end{itemize} 
+        \pause
+        \item Gewählte Lösung: L2
+    \end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{Problem 3}
+    \begin{itemize}
+        \item Logout-Button ist nur sichtbar wenn über Navigation gehovert
+        \item[$\rightarrow$] Selenium IDE kann kein Hovern
+        \item[$\rightarrow$] Aber Selenium IDE kann JS-Skripte ausführen
+        \item Mögliche Lösungen: \begin{itemize}
+            \item[L1:] Nutzung von Selenium anstelle von Selenium IDE
+            \item[$\rightarrow$] Zeitmangel zum Einlernen ins programmatische Testen mit Selenium.
+            \item[L2:] Auslösen des Klick-Events auf Logout-Button durch Ausführung eines JS-Skriptes 
+        \end{itemize}
+        \pause
+        \item Gewählte Lösung: L2
+    \end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{Test-Zusammenfassung}
+    \begin{itemize}
+        \item Unit-Tests: 333 (Parametrisierte) Unit-Tests
+        \item Unit-Test-Abdeckung: 87,73\%
+        \item Integration-Tests: 136 (Parametrisierte) Integrations-Tests
+        \item Integration-Test-Abdeckung: 74,94\%
+        \item Insgesamte Tests: 469 (Parametrisierte) Tests
+        \item Insgesamte Abdeckung: 95,8\% 
+        \item Insgesamt 5001 Zeilen Tests
+    \end{itemize}
+\end{frame}
