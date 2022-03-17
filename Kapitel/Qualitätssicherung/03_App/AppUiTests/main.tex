@@ -1,0 +1,108 @@
+
+\begin{frame}\frametitle{UI-Test-Frameworks}
+    \begin{columns}
+        \column{0.5\textwidth}
+        \begin{itemize}
+            \item Compose-Test-Framework
+            \item Espresso
+            \item UI-Automator
+        \end{itemize}
+        \column{0.5\textwidth}
+        \begin{figure}[ht]
+            \centering
+            \includegraphics[width=7.5cm]{\relimgfile{Anmeldung.png}}
+        \end{figure}
+    \end{columns}
+\end{frame}
+
+\begin{frame}\frametitle{UI-Test Karte}
+    \begin{columns}
+        \column{0.5\textwidth}
+        \begin{itemize}
+            \item View in Compose
+            \item Karte ist eine View
+            \begin{itemize}
+                \item Kein Zugriff auf Layout
+                \item Kein Wissen, was angezeigt
+                \item Wohin klicken?
+            \end{itemize}
+        \end{itemize}
+        \column{0.5\textwidth}
+        \begin{figure}[ht]
+            \centering
+            \includegraphics[width=7.5cm]{\relimgfile{Kartenlayout.jpg}}
+        \end{figure}
+    \end{columns}
+\end{frame}
+
+\begin{frame}\frametitle{UI-Test Karte}
+    \begin{columns}
+        \column{0.5\textwidth}
+        \begin{itemize}
+            \item Idee: Virtuelle View-Hierarchie
+            \item Probleme:
+            \begin{itemize}
+                \item MapView-Klasse aus Library
+                \item Modellierung nicht dafür ausgelegt
+                \item Verschieben-Funktionalität
+                \item Großer Rechenaufwand
+            \end{itemize}
+        \end{itemize}
+        \column{0.5\textwidth}
+        \begin{figure}[ht]
+            \centering
+            \includegraphics[width=7.5cm]{\relimgfile{Kartenlayout.jpg}}
+        \end{figure}
+    \end{columns}
+\end{frame}
+
+\begin{frame}\frametitle{UI-Test Karte}
+    \begin{columns}
+        \column{0.5\textwidth}
+        \begin{itemize}
+            \item Lösung 1: UI-Automator
+            \item Schwierigkeiten:
+            \begin{itemize}
+                \item Kein Wissen über UI -> manuell hardcoden
+                \item App blind bedienen
+                \item Verschiedene Gerätegrößen
+            \end{itemize}
+            \item Lösung 2: Suchfunktion verwenden
+        \end{itemize}
+        \column{0.5\textwidth}
+        \begin{figure}[ht]
+            \centering
+            \includegraphics[width=7.5cm]{\relimgfile{Kartenlayout.jpg}}
+        \end{figure}
+    \end{columns}
+\end{frame}
+
+\begin{frame}\frametitle{UI-Test Karte}
+    \begin{columns}
+        \column{0.5\textwidth}
+        \begin{itemize}
+            \item Blindes bedienen
+            \item Theoretische Zahlen über MapView
+            \begin{itemize}
+                \item Zoom-Stufe, Koordinaten, ...
+            \end{itemize}
+            \item Frage: Ist alles zu sehen?
+            \begin{itemize}
+                \item Straßennamen, Zeichenreihenfolge, ...
+            \end{itemize}
+            \item Lösung: Manuelle Verifikation:
+            \begin{itemize}
+                \item Test beobachten
+                \item Frage beantworten
+            \end{itemize}
+        \end{itemize}
+        \column{0.5\textwidth}
+        \begin{figure}[ht]
+            \centering
+            \includegraphics[width=7.5cm]{\relimgfile{Manuell.jpg}}
+        \end{figure}
+    \end{columns}
+\end{frame}
+
+
+

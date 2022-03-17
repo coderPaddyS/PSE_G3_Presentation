@@ -1,1 +1,45 @@
 \section{KIT-Anmeldung}
+
+\begin{frame}\frametitle{Keine eigene Anmeldung}
+    \begin{itemize}
+        \item Warum? \pause
+        \item Jeder kann sich einen Account machen. Wie verhindern wir Spam? KIT-Datenschutz?
+        \item Nutzerdaten müssen sicher gespeichert werden: \begin{itemize}
+            \item Passwörter müssen gehashed werden.
+            \item Gleiche Passwörter bei unterschiedlichen Benutzern müssen anders gehashed werden.
+            \item Sicherheitskriterien für Passwörter müssen durchgesetzt werden.
+            \item Datenübertragung muss verschlüsselt sein.
+            \item Zugangsdaten für die DB müssen gesichert gelagert sein.
+        \end{itemize}
+        \item Wie kann man das Passwort erneuern? Was passiert wenn das Passwort vergessen wurde?
+        \item Wie sichern wir den Server gegen Angriffe?
+    \end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{Anmeldung mit Shibboleth via OIDC}
+    \begin{itemize}
+        \item Vorherige Probleme werden ans KIT delegiert.
+        \item Anmeldung mit KIT-Account.
+        \item Einfachere Schnittstelle mit Shibboleth.
+        \item Neuester Sicherheitsstandard dank OIDC.
+        \item Token-Basierte Authentifizierung, verschlüsselte Nutzerdaten direkt enthalten.
+        \pause
+        \item Nachteil: Tokens laufen nach 30 min Inaktivität ab
+        \item[$\rightarrow$] Neuauthentifizierung nötig.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{Typischer Ablauf eines OIDC-Code-Flows}
+    \centering
+    \inprelimg[height=0.8\textheight]{oidc_auth_code}
+\end{frame}
+
+\begin{frame}\frametitle{Hybride Anmeldung}
+    \begin{itemize}
+        \item Geplant: Hybride Anmeldung
+        \item Registrierung über Shibboleth.
+        \item Erstellung eigener, verschlüsselter Tokens durchs Backend, länger gültig.
+        \item Übertragung der Nutzerdaten in den Token $\rightarrow$ Keine Nutzerdaten zu speichern.
+        \item Neuauthentifizierung spätestens nach einem Semester um Studentenstatus zu validieren.
+    \end{itemize}
+\end{frame}
