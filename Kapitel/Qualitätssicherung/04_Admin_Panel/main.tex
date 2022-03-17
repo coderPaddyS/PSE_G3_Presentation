@@ -1,29 +1,5 @@
 \section{Admin Panel}
 
-\begin{frame}\frametitle{Bugs}
-    \begin{itemize}
-        \item[BAP1] Abruf der Alias-Vorschläge vom Server funktionierte nicht.
-        \item[BAP2] Abruf der offiziellen Aliase vom Server funktionierte nicht.
-        \item[BAP3] Filterung nach Zahlen funktionierte nicht.
-        \item[BAP4] Offizielle Aliase wurden nur lokal im Browser gelöscht.
-        \item[BAP5] Offizielle Aliase wurden nicht geblacklisted.
-    \end{itemize}
-\end{frame} 
-
-\begin{frame}\frametitle{Ursachen und Lösungen}
-    \begin{adjustwidth}{1.5em}{0pt}
-        \begin{itemize}
-            \item[BAP1/2/4] Nicht valide GraphQL-Anfrage durch Typisierung gesendet \\
-                $\rightarrow$ Keine Typisierung angeben.
-            \item[BAP3] Die Text-Eingabe \texttt{0} wurde zu \texttt{"0"} escaped \\
-                $\rightarrow$ Automatisches Entfernen aller \texttt{"} im entsprechenden Filter.
-            \item[BAP5] Falscher Codeaufruf erfolgt, veraltetes Debug-Relikt aus Testphase \\ 
-                \texttt{\{this.blacklist.addEntry(new BlacklistEntry(entry)); return true;\}} $\rightarrow$ \\
-                \texttt{\{return this.addToBlacklist(new BlacklistEntry(entry))\}}
-        \end{itemize}
-    \end{adjustwidth}
-\end{frame}
-
 \begin{frame}\frametitle{Integrationstests}
     \begin{itemize}
         \item Keine Trennung zwischen UI- und Integrationstests $\rightarrow$ UI ruft direkt Methoden des Controller auf 
@@ -31,20 +7,57 @@
         \item[$\rightarrow$] UI-Tests entsprechen bereits fast Integrationstest, programmatisch bei Integrationstest getestet.
         \item Fast alles mit Jest getestet.
         \item Ausnahme: Lade/Aufrufzeiten des Admin-Panels und Login
-        \item[$\rightarrow$] Selenium IDE 
+        \item[$\rightarrow$] Selenium IDE.
     \end{itemize}
 \end{frame}
 
 \begin{frame}\frametitle{Problem}
     \begin{itemize}
         \item Admin-Panel kann keine Alias-Vorschläge erstellen
-        \item[$\rightarrow$] Tests können keine Daten permanent ändern, sonst Fehlschlag
+        \item[$\rightarrow$] Tests können keine Daten permanent ändern, sonst Fehlschlag.
         \item Mögliche Lösungen: \begin{itemize}
-            \item Hinzufügen der Anfrage zum Erstellen von Alias-Vorschlägen
-            \item Emulieren des Backends in Test-Code
+            \item[L1:] Hinzufügen der Anfrage zum Erstellen von Alias-Vorschlägen
+            \item[$\rightarrow$] Tests sind nicht mehr unabhängig.
+            \item[$\rightarrow$] Lösbar durch Nutzung einer lokalen Instanz. 
+            \item[L2:] Emulieren des Backends in Test-Code
+            \item[$\rightarrow$] Komplette Emulation zu aufwendig.
+            \item[$\rightarrow$] Anfragen nicht validieren, nur auf Inhalt prüfen.
         \end{itemize} 
         \pause
-        \item Gewählte Lösung: Emulation
+        \item Gewählte Lösung: L2
+        \item[$\rightarrow$] Technische Schwierigkeiten bei lokaler Instanz.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{Problem 2}
+    \begin{itemize}
+        \item Wie wird festgestellt ob genau ein spezieller Eintrag angezeigt wird?
+        \item Idee: Überprüfen ob der zu zeigende Text im Dokument ist.
+        \item[$\rightarrow$] Test mit Aliase für das gleiche Gebäude schlagen fehl.
+        \item Idee: Überprüfen ob der zu zeigende Text in einer logischen Einheit ist \begin{itemize}
+            \item[L1:] Elternelement über Klassen/IDs heraussuchen.
+            \item[$\rightarrow$] Möglichst vermeiden falls möglich, muss mitgeändert werden.
+            \item[L2:]Textinhalt des Dokumentes beinhaltet Eintrag am Stück.
+            \item[$\rightarrow$] Manchmal sind Leerzeichen im Textinhalt, manchmal nicht.
+            \item[$\rightarrow$] Ablaufen des DOM-Baumes zum Finden aller Texteinträge und speichern dieser als Array.
+        \end{itemize} 
+        \pause
+        \item Gewählte Lösung: L2
+    \end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{Problem 3}
+    \begin{itemize}
+        \item Logout-Button ist nur sichtbar wenn über Navigation gehovert
+        \item[$\rightarrow$] Selenium IDE kann kein Hovern
+        \item[$\rightarrow$] Aber Selenium IDE kann JS-Skripte ausführen
+        \item Mögliche Lösungen: \begin{itemize}
+            \item[L1:] Nutzung von Selenium anstelle von Selenium IDE
+            \item[$\rightarrow$] Zeitmangel zum Einlernen ins programmatische Testen mit Selenium.
+            \item[L2:] Auslösen des Klick-Events auf Logout-Button durch Ausführung eines JS-Skriptes 
+        \end{itemize}
+        \pause
+        \item Gewählte Lösung: L2
     \end{itemize}
 \end{frame}
 
