@@ -1,0 +1,36 @@
+\section*{Stresstests}
+
+\begin{frame}\frametitle{Stresstests}
+    \begin{itemize}
+        \item um die Performance sowohl des Backends als auch des Admin-Panels zu testen
+        \begin{itemize}
+        		\item Anforderungen aus dem Pflichtenheft erfüllen
+        		\begin{itemize}
+        			\item {benötigte Zeit vom Admin-Panel zum Senden einer Anfrage an Server}
+        			\item {Bearbeitungsdauer des Servers}
+        		\end{itemize}
+        \end{itemize}
+        \item Shellskript, das 1000 Anfragen an den Server stellt
+        	\begin{itemize}
+        		\item Ausführen des Shellskripts mehrmals auf verschiedene Geräte zum gleichen Zeitpunkt
+        	\end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{Stresstests}
+	\begin{tabular}{cl}  
+        	\begin{tabular}{c}
+    			\inprelimg[width=.4\textwidth]{Server-Response-Time}
+    		\end{tabular}
+    		& \begin{tabular}{l}
+    			\parbox{0.5\linewidth}{
+    		\begin{itemize}
+    			\item Datensatzgröße: 7000 Anfragen
+    			\item Maximale Zeit: 5188ms (hier zur Übersicht aus der Grafik entfernt)
+    			\item 90-Prozentil: 141ms
+    			\item Max-Anfragen-Pro-Sekunde: 45-50 A/s
+		\end{itemize}
+		}
+    		\end{tabular} \\
+    	\end{tabular}
+\end{frame}
