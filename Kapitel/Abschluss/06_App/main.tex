@@ -1,1 +1,55 @@
 \section{App}
+
+\begin{frame}\frametitle{Kartendienst}
+    \begin{columns}
+        \column{0.5\textwidth}
+        \begin{itemize}
+            \item OpenStreetMap
+            \begin{itemize}
+                \item offen
+                \item kostenlos
+                \item mehr Details
+                \item Gestaltungsfreiheit
+            \end{itemize}
+            \item Library Osmdroid
+        \end{itemize}
+        \column{0.5\textwidth}
+        \begin{figure}[ht]
+            \centering
+            \includegraphics[width=7.5cm]{\relimgfile{Karte.png}}
+            \caption{© OpenStreetMap contributors}
+        \end{figure}
+    \end{columns}
+\end{frame}
+
+\begin{frame}\frametitle{Kartenelemente - Gebäudemarker}
+        \begin{figure}[ht]
+            \centering
+            \includegraphics[width=10.5cm]{\relimgfile{Marker.PNG}}
+        \end{figure}
+\end{frame}
+
+\begin{frame}\frametitle{Kartenelemente}
+    \begin{itemize}
+        \item Kartenelemente müssen auf Datenwechsel reagieren
+        \item Entwurf: LiveData beobachten
+        \item Problem: Kartenelemente sind normale Klassen ohne Lifecycle
+        \item Daten müssen in Composable beobachtet werden
+    \end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{Erfahrung mit Osmdroid}
+    \begin{columns}
+        \column{0.5\textwidth}
+        \begin{itemize}
+            \item Seltene Grafikfehler
+            \item Nutzung exakter Pixelgrößen \\ $\Rightarrow$ unterschiedliches Aussehen
+            \item Nutzung von vorgerenderter Hintergrundkarte
+        \end{itemize}
+        \column{0.5\textwidth}
+        \begin{figure}[ht]
+            \centering
+            \includegraphics[width=4.5cm]{\relimgfile{Kartenbug.jpg}}
+        \end{figure}
+    \end{columns}
+\end{frame}
